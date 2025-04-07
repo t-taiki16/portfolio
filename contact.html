@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | T.Taiki</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1>T.Taiki | Web制作</h1>
+        <h2>お問い合わせ</h2>
+    </header>
+
+    <main class="contact-section">
+        <p>お仕事のご依頼・ご相談など、お気軽にお問い合わせください。</p>
+        <form id="contactForm" class="contact-form">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" required>
+        
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="message">メッセージ</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+        
+            <button type="submit">送信する</button>
+            <input type="hidden" name="_captcha" value="false">
+        </form>
+        
+        <script>
+            document.getElementById("contactForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const message = document.getElementById("message").value;
+        
+                const query = new URLSearchParams({
+                    name,
+                    email,
+                    message
+                }).toString();
+        
+                window.location.href = "confirm.html?" + query;
+            });
+        </script>
+    </main>
+    <footer class="site-footer">
+        <a href="index.html" class="footer-link">↑ トップへ戻る</a>
+      </footer>
+      <script src="main.js"></script>
+</body>
+</html>

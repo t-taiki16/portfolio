@@ -1,0 +1,419 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: radial-gradient(circle at center, #2b1055 0%, #000000 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative; 
+  }
+
+/* ヘッダー */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 10;
+}
+
+/* ナビゲーションコンテナ */
+.nav-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin-top: 150px; /* ←ヘッダー分の余白を作る */
+}
+
+/* 花びら（楕円） */
+.ellipse {
+    position: absolute;
+    width: 600px;  /* サイズを大きく */
+    height: 200px; /* しっかりした楕円の形に */
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* 各花びらの配置（六芒星の形状） */
+.ellipse:nth-child(1) {
+    top: 200px;
+    left: 0;
+    background-color: #d4f808;
+}
+.ellipse:nth-child(2) {
+    top: 200px;
+    left: 0;
+    transform: rotate(60deg);
+    background-color: rebeccapurple;
+}
+.ellipse:nth-child(3) {
+    top: 200px;
+    left: 0;
+    transform: rotate(-60deg);
+    background-color: red;
+}
+
+/* 中央の円 */
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: 180px;
+    background-color: black;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.click-text {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* ナビゲーション */
+.nav-link {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    background-color: darkred;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+/* ナビゲーションの位置を六芒星の頂点に配置 */
+.nav-link:nth-of-type(1) { top: 280px; left: 32px; } /* 右 */
+.nav-link:nth-of-type(2) { top: 280px; left: 450px; } /* 左*/
+.nav-link:nth-of-type(3) { top: 100px; left: 140px; }  /* 左上 */
+.nav-link:nth-of-type(4) { top: 100px; left: 348px; } /* 右上 */
+.nav-link:nth-of-type(5) { top: 480px; left: 132px; } /* 左下 */
+.nav-link:nth-of-type(6) { top: 480px; left: 348px; } /* 右下 */
+.nav-link:hover {
+    background-color: crimson;
+}
+
+.profile-section {
+    margin: 180px auto 50px; /* ヘッダーの分だけ下げる */
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-size: 16px;
+    color: #333;
+}
+
+.services-section {
+    margin: 180px auto 50px;
+    width: 90%;
+    max-width: 900px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-size: 16px;
+    color: #333;
+}
+
+.services-section h2,
+.services-section h3 {
+    color: #263881;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+.contact-section {
+    margin: 180px auto 50px;
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-form label {
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.contact-form button {
+    padding: 12px;
+    background-color: #263881;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #1c2b66;
+}
+
+.confirm-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.contact-section p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.blog-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .blog-card h3 {
+    margin-top: 0;
+  }
+  
+  .blog-excerpt {
+    color: #555;
+  }
+  
+  .blog-date {
+    font-size: 0.9em;
+    color: #999;
+  }
+
+  .back-button {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .button-link:hover {
+    background-color: #555;
+  }
+
+  .blog-section {
+    padding-top: 100px; /* ヘッダーの高さに応じて調整 */
+  }
+
+/* フッター*/
+.footer-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+    font-size: 1rem;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* ▼ ブラックアウト演出 ▼ */
+.blackout {
+    position: fixed;
+    inset: 0;
+    background-color: #000;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 2s ease;
+  }
+  
+  /* ロード後にフェードアウト */
+  body.loaded .blackout {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* 本体のフェードイン */
+  body {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+  }
+  
+  body.loaded {
+    opacity: 1;
+  }
+  /* ▲ ブラックアウト演出ここまで ▲ */
+
+ /* 初期状態で非表示 */
+.ellipse, .center-circle, .click-text {
+    opacity: 0;
+  }
+  
+  /* アニメーション共通設定 */
+  .animate {
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+  }
+  
+  /* 各図形のアニメーション定義（rotate残す！） */
+  .ellipse1.animate {
+    animation-name: appear1;
+  }
+  .ellipse2.animate {
+    animation-name: appear2;
+  }
+  .ellipse3.animate {
+    animation-name: appear3;
+  }
+  .center-circle.animate {
+    animation-name: appearCenter;
+  }
+  .click-text.animate {
+    animation-name: appearText;
+  }
+  
+  /* キーフレーム定義 */
+  @keyframes appear1 {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes appear2 {
+    0% { opacity: 0; transform: rotate(60deg) scale(0.8); }
+    100% { opacity: 1; transform: rotate(60deg) scale(1); }
+  }
+  
+  @keyframes appear3 {
+    0% { opacity: 0; transform: rotate(-60deg) scale(0.8); }
+    100% { opacity: 1; transform: rotate(-60deg) scale(1); }
+  }
+  
+  @keyframes appearCenter {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  @keyframes appearText {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 初期状態 */
+.nav-link {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  /* 表示用クラス */
+  .nav-link.animate {
+    opacity: 1;
+  }
+  /*擬似要素＋グロー風アニメーション*/
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, white 0%, transparent 60%);
+    opacity: 0.1;
+    z-index: -1;
+    animation: pulse 5s infinite alternate;
+    pointer-events: none; 
+  }
+  /* アニメーション定義 */
+  @keyframes pulse {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.2; }
+  }
+  
+  .shooting-star {
+    position: fixed;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(white, transparent);
+    opacity: 0.5;
+    transform: rotate(45deg);
+    pointer-events: none;
+    z-index: 0; /* UIより下、canvasより上 */
+    animation: shoot-star 1.5s linear forwards;
+  }
+  
+  @keyframes shoot-star {
+    0% {
+      transform: translate(0, 0) rotate(45deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(800px, 600px) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  
+  
+  canvas#star-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* ヘッダーや図形より後ろに */
+    pointer-events: none; /* クリックなどを無効化 */
+  }

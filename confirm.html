@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>確認画面 | T.Taiki</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1>T.Taiki | Web制作</h1>
+        <h2>お問い合わせ内容の確認</h2>
+    </header>
+
+    <main class="contact-section">
+        <p>以下の内容で送信してもよろしいですか？</p>
+
+        <div class="confirm-box">
+            <p><strong>お名前：</strong> <span id="confirmName"></span></p>
+            <p><strong>メールアドレス：</strong> <span id="confirmEmail"></span></p>
+            <p><strong>メッセージ：</strong><br><span id="confirmMessage"></span></p>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button onclick="history.back()">戻る</button>
+            <button onclick="submitForm()">送信する</button>
+        </div>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("confirmName").textContent = params.get("name") || "";
+        document.getElementById("confirmEmail").textContent = params.get("email") || "";
+        document.getElementById("confirmMessage").textContent = params.get("message") || "";
+      
+        function submitForm() {
+          const name = params.get("name");
+          const email = params.get("email");
+          const message = params.get("message");
+      
+          fetch("https://formspree.io/f/mjkyadvl", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email, message })
+          })
+          .then(response => {
+            if (response.ok) {
+              window.location.href = "thankyou.html";
+            } else {
+              alert("送信に失敗しました。");
+            }
+          })
+          .catch(error => {
+            alert("ネットワークエラーが発生しました。");
+            console.error(error);
+          });
+        }
+      </script>
+</body>
+</html>
