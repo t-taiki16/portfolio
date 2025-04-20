@@ -59,23 +59,28 @@ function createShootingStar() {
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 
-  const ellipses = document.querySelectorAll('.ellipse');
-  const centerCircle = document.querySelector('.center-circle');
-  const clickText = document.querySelector('.click-text');
-  const navLinks = document.querySelectorAll('.nav-link');
+  // トップページ専用のアニメーション
+  if (document.body.classList.contains('home-page')) {
+    const ellipses = document.querySelectorAll('.ellipse');
+    const centerCircle = document.querySelector('.center-circle');
+    const clickText = document.querySelector('.click-text');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-  setTimeout(() => ellipses[0].classList.add('ellipse1', 'animate'), 500);
-  setTimeout(() => ellipses[1].classList.add('ellipse2', 'animate'), 1000);
-  setTimeout(() => ellipses[2].classList.add('ellipse3', 'animate'), 1500);
-  setTimeout(() => centerCircle.classList.add('animate'), 2200);
-  setTimeout(() => clickText.classList.add('animate'), 2700);
+    setTimeout(() => ellipses[0].classList.add('ellipse1', 'animate'), 500);
+    setTimeout(() => ellipses[1].classList.add('ellipse2', 'animate'), 1000);
+    setTimeout(() => ellipses[2].classList.add('ellipse3', 'animate'), 1500);
+    setTimeout(() => centerCircle.classList.add('animate'), 2200);
+    setTimeout(() => clickText.classList.add('animate'), 2700);
 
-  navLinks.forEach((link, i) => {
-    setTimeout(() => link.classList.add('animate'), 3000 + i * 200);
-  });
+    navLinks.forEach((link, i) => {
+      setTimeout(() => link.classList.add('animate'), 3000 + i * 200);
+    });
+  }
 
   // ☄️ 流れ星を定期的に生成
   setInterval(() => {
     createShootingStar();
   }, 4000 + Math.random() * 4000); // 4〜8秒間隔
 });
+
+
